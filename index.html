@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" >
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 
-	<title>HTML canvas video player</title>
+  <title>HTML canvas video player</title>
 
-	<link rel="stylesheet" href="https://stanko.github.io/skyblue/css/skyblue.css">
-	<link rel="stylesheet" href="demo/demo.css">
+  <link rel="stylesheet" href="https://stanko.github.io/skyblue/css/skyblue.css">
+  <link rel="stylesheet" href="demo/demo.css">
 </head>
 
 <body>
-	<div class="header">
-		<div class="content">
-			<a href="https://github.com/Stanko/html-canvas-video-player" class="padding-right-20">GitHub</a>
-			<a href="https://github.com/Stanko/html-canvas-video-player/archive/master.zip">Download</a>
-		</div>
-	</div>
-	<div class="video-wrapper js-video-wrapper">
-		<div class="video-responsive">
-			<video class="video js-video" muted>
-				<source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.webm" type="video/webm">
-				<source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4" type="video/mp4">
-				<source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv" type="video/ogg">
-				Your browser does not support HTML5 video.
-			</video>
+  <div class="header">
+    <div class="content">
+      <a href="https://github.com/Stanko/html-canvas-video-player" class="padding-right-20">GitHub</a>
+      <a href="https://github.com/Stanko/html-canvas-video-player/archive/master.zip">Download</a>
+    </div>
+  </div>
+  <div class="video-wrapper js-video-wrapper">
+    <div class="video-responsive">
+      
+      <canvas class="canvas js-canvas"></canvas>
 
-			<canvas class="canvas js-canvas"></canvas>
+      <div class="video-timeline js-timeline">
+        <div class="video-timeline-passed js-timeline-passed">
+        </div>
+      </div>
+    </div>
+  </div>
 
-			<div class="video-timeline js-timeline">
-				<div class="video-timeline-passed js-timeline-passed">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="content">
-		<h1 class="margin-bottom-10">HTML canvas video player</h1>
-		<h3 class="margin-bottom-20">Easy way to play videos inline on iPhones</h3>
-		<p>
-			This is intended for iPhone only, it can be used on any other browser
-			which support canvas and video. It doesn't play sound, I have no real
-			plan of adding audio support.
-		</p>
-		<p>
-			It can be used with any HTML video player, just position canvas over the video.
-			Intended usage was for background videos and showcases.
-			It doesn't include timeline as in demo, but that piece of code is also on GitHub.
-			This is plain JavaScript solution, no dependencies, IE9+ and modern browsers.
-		</p>
-		<p>
-			For IE9 there must be <code>requestAnimationFrame</code> polyfill
-		</p>
-		<p>
-			Download on
-			<a href="https://github.com/Stanko/html-canvas-video-player">GitHub</a>.
-		</p>
+  <div class="content">
+    <h1 class="margin-bottom-10">HTML canvas video player</h1>
+    <h3 class="margin-bottom-20">Easy way to play videos inline on iPhones</h3>
+    <p>
+      This is intended for iPhone only, it can be used on any other browser
+      which support canvas and video. It doesn't play sound, I have no real
+      plan of adding audio support.
+    </p>
+    <p>
+      It can be used with any HTML video player, just position canvas over the video.
+      Intended usage was for background videos and showcases.
+      It doesn't include timeline as in demo, but that piece of code is also on GitHub.
+      This is plain JavaScript solution, no dependencies, IE9+ and modern browsers.
+    </p>
+    <p>
+      For IE9 there must be <code>requestAnimationFrame</code> polyfill
+    </p>
+    <p>
+      Download on
+      <a href="https://github.com/Stanko/html-canvas-video-player">GitHub</a>.
+    </p>
 
 <h4 class="margin-top-30">Minimum setup:</h4>
 <pre>
@@ -101,29 +95,31 @@ var isIphone = navigator.userAgent.toLowerCase().indexOf('iphone') >= 0;
 if (isIphone) {
     <span class="color-grey">// Init CanvasVideoPlayer here</span>
     new <span class="color-success">CanvasVideoPlayer</span>({
-    	<span class="color-grey">// Options</span>
+      <span class="color-grey">// Options</span>
     });
 }
 </pre>
 
 
-		<p class="margin-top-50">
-			Released under MIT licence.
-		</p>
-	</div>
+    <p class="margin-top-50">
+      Released under MIT licence.
+    </p>
+  </div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="demo/fastclick.js"></script>
-	<script src="demo/demo.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="demo/fastclick.js"></script>
+  <script src="demo/demo.js"></script>
 
-	<script src="js/canvas-video-player.js"></script>
+  <script src="js/canvas-video-player.js"></script>
 
 
-	<script>
-		var canvasVideo = new CanvasVideoPlayer({
-			videoSelector: '.js-video',
-			canvasSelector: '.js-canvas'
-		});
-	</script>
+  <script>
+    var canvasVideo = new CanvasVideoPlayer({
+      videoSelector: '.video-responsive',
+      canvasSelector: '.js-canvas',
+      videoUrl: './big_buck_bunny.mp4',
+      audioUrl: './big_buck_bunny.aac',
+    });
+  </script>
 </body>
 </html>
